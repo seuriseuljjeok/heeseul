@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>경력기술서 · 윤희슬 · Product Designer</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root {
+    --bg: #FBFAF7;
+    --ink: #161513;
+    --ink-2: #2D2A25;
+    --muted: #8A857C;
+    --rule: #E3DDD0;
+    --accent: #E85C18;
+    --maxw: 920px;
+    --gutter: 72px;
+    --sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 15px;
+    letter-spacing: -0.011em;
+    word-break: keep-all;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+
+  .page {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 88px var(--gutter) 64px;
+    min-height: 100vh;
+    position: relative;
+  }
+  .pn {
+    position: absolute;
+    bottom: 32px;
+    left: var(--gutter);
+    right: var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+/* Doc type — moved outside header */
+  .doc-type {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+ 
+  /* Header */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 130px;
+    gap: 32px;
+    align-items: start;
+    margin-bottom: 40px;
+  }
+  .header .name {
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0 0 10px 0;
+  }
+  .header .name span {
+    font-size: 0.42em;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+  .header .role {
+    font-size: 16px;
+    color: var(--accent);
+    font-weight: 500;
+    margin: 0 0 20px 0;
+  }
+  .header .contact {
+    font-size: 12.5px;
+    color: var(--muted);
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+  }
+ 
+  /* Photo */
+  .photo {
+    width: 130px;
+    height: 170px;
+    position: relative;
+    background: #EFE9DD;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+  .photo-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--muted);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 8px;
+  }
+  .photo-fallback .small {
+    font-size: 8.5px;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    line-height: 1.4;
+  }
+
+  /* Summary */
+  .summary {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--ink);
+    margin-bottom: 40px;
+  }
+  .summary h2 {
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 0 14px 0;
+  }
+  .summary .tagline {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.018em;
+    line-height: 1.45;
+    margin: 0 0 14px 0;
+    max-width: 760px;
+  }
+  .summary p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--ink-2);
+    margin: 0 0 10px 0;
+    max-width: 760px;
+  }
+  .summary p:last-child { margin-bottom: 0; }
+  .summary p strong { color: var(--ink); font-weight: 600; }
+
+  /* Project block */
+  .project {
+    padding: 32px 0;
+    border-top: 1px solid var(--rule);
+    break-inside: avoid;
+  }
+  .project:first-of-type { border-top: none; padding-top: 8px; }
+
+  .project-head {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    margin-bottom: 16px;
+  }
+  .project-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .project-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+  }
+  .project-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .award {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: rgba(232, 92, 24, 0.08);
+    border-radius: 99px;
+    vertical-align: 3px;
+  }
+
+  /* Meta row */
+  .meta-row {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+  .meta-row .filler {}
+  .meta-table {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 6px 24px;
+    padding: 16px 20px;
+    background: rgba(0,0,0,0.025);
+    border-left: 2px solid var(--accent);
+    font-size: 13px;
+  }
+  .meta-table dt {
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    padding-top: 1px;
+  }
+  .meta-table dd {
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* Subsections inside project */
+  .sub {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+  .sub:last-child { margin-bottom: 0; }
+  .sub h4 {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 4px 0 0 0;
+  }
+  .sub .body {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--ink-2);
+  }
+  .sub .body p { margin: 0 0 8px 0; }
+  .sub .body p:last-child { margin-bottom: 0; }
+  .sub .body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sub .body ul li {
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .sub .body ul li:last-child { margin-bottom: 0; }
+  .sub .body ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 6px;
+    height: 1.5px;
+    background: var(--accent);
+  }
+  .sub .body strong { color: var(--ink); font-weight: 600; }
+
+  /* Brief project list */
+  .brief-list { display: grid; gap: 0; }
+  .brief {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .brief:first-child { border-top: none; padding-top: 8px; }
+  .brief .b-num {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding-top: 4px;
+  }
+  .brief .b-title { font-size: 16px; font-weight: 600; color: var(--ink); margin: 0 0 4px 0; letter-spacing: -0.015em; }
+  .brief .b-meta { font-size: 12.5px; color: var(--muted); margin: 0 0 6px 0; }
+  .brief .b-desc { font-size: 13.5px; line-height: 1.6; color: var(--ink-2); margin: 0; }
+
+  /* Section header */
+  .sec-head {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 0 28px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .info-block { margin-bottom: 24px; }
+  .info-block:last-child { margin-bottom: 0; }
+  .info-block h3 {
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+  }
+  .info-block .li {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .info-block .li:last-child { border-bottom: none; }
+  .info-block .li strong { color: var(--ink); font-weight: 600; }
+  .info-block .li .yr { color: var(--muted); font-size: 12px; margin-right: 6px; letter-spacing: 0.02em; }
+  .info-block .li .pill {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  /* Skills flat */
+  .skills-flat {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.75;
+    padding: 14px 0;
+    border-top: 1px dashed var(--rule);
+    border-bottom: 1px dashed var(--rule);
+  }
+  .skills-flat em { font-style: normal; color: var(--accent); font-weight: 500; }
+ 
+/* Skills block */
+  .skill-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .skill-row:last-child { border-bottom: none; }
+  .skill-row .cat { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; padding-top: 1px; }
+  .skill-row .items { font-size: 14px; color: var(--ink); line-height: 1.55; }
+  .skill-row .items em { font-style: normal; color: var(--accent); font-weight: 500; }
+
+  /* Responsive */
+  @media (max-width: 760px) {
+    :root { --gutter: 28px; }
+    .page { padding: 56px var(--gutter); min-height: auto; }
+    .project-head, .sub, .meta-row, .brief { grid-template-columns: 1fr; gap: 8px; }
+    .info-grid { grid-template-columns: 1fr; gap: 24px; }
+    .skill-row { grid-template-columns: 1fr; gap: 4px; }
+    .header { grid-template-columns: 1fr; gap: 24px; }
+    .photo { width: 110px; height: 145px; }
+    .header .contact { flex-direction: column; gap: 4px; }
+    .pn { position: static; margin-top: 32px; }
+  }
+
+  /* Print A4 */
+  @page { size: A4; margin: 0; }
+  @media print {
+    :root { --gutter: 44px; }
+    html, body { background: var(--bg); font-size: 11.5px; }
+    .page {
+      min-height: 297mm; width: 210mm; max-width: 210mm;
+      padding: 44px var(--gutter) 36px;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+    .header { margin-bottom: 24px; }
+    .header .name { font-size: 32px; }
+    .header .role { font-size: 13px; }
+    .summary { padding: 14px 0; margin-bottom: 24px; }
+    .summary .tagline { font-size: 14px; margin-bottom: 10px; }
+    .summary p { font-size: 11.5px; }
+    .project { padding: 18px 0; }
+    .project-num { font-size: 18px; }
+    .project-title { font-size: 17px; }
+    .project-sub { font-size: 11px; }
+    .meta-table { font-size: 10.5px; padding: 12px 14px; gap: 4px 18px; grid-template-columns: 80px 1fr; }
+    .meta-table dt { font-size: 9.5px; }
+    .sub { gap: 18px; margin-bottom: 12px; }
+    .sub h4 { font-size: 9.5px; }
+    .sub .body { font-size: 11px; line-height: 1.65; }
+    .sub .body ul li { padding-left: 13px; margin-bottom: 5px; }
+    .sub .body ul li::before { top: 9px; width: 5px; }
+    .brief { padding: 12px 0; }
+    .brief .b-num { font-size: 10.5px; }
+    .brief .b-title { font-size: 13px; }
+    .brief .b-meta { font-size: 10.5px; }
+    .brief .b-desc { font-size: 11px; }
+    .sec-head { font-size: 9.5px; margin-bottom: 18px; padding-bottom: 8px; }
+    .info-grid { gap: 28px; }
+    .info-block h3 { font-size: 9.5px; }
+    .info-block .li { font-size: 11px; padding: 4px 0; }
+    .skills-flat { font-size: 11px; line-height: 1.75; padding: 10px 0; }
+    .skill-row { padding: 10px 0; grid-template-columns: 110px 1fr; gap: 18px; }
+    .skill-row .cat, .skill-row .items { font-size: 11px; }
+    .pn { font-size: 9.5px; bottom: 18px; }
+    .project-head { grid-template-columns: 50px 1fr; gap: 18px; }
+    .meta-row { grid-template-columns: 50px 1fr; gap: 18px; }
+    .sub { grid-template-columns: 50px 1fr; }
+    .brief { grid-template-columns: 50px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 · Header + Summary + 포토위젯 + instamoney -->
+<section class="page">
+
+  <header class="header">
+    <div>
+      <h1 class="name">윤희슬 <span>Yun Heeseul</span></h1>
+      <p class="role">Product Designer</p>
+      <div class="contact">
+        <span>peony491@naver.com</span>
+        <span>010-6305-3171</span>
+        <span>github.com/seuriseuljjeok</span>
+      </div>
+    </div>
+    <div class="photo">
+      <img src="profile.jpg" alt="윤희슬 프로필 사진" onerror="this.style.display='none'" />
+      <span class="photo-fallback">
+        PHOTO
+        <span class="small">profile.jpg를<br/>같은 폴더에 두세요</span>
+      </span>
+    </div>
+  </header>
+  <div class="summary">
+    <h2>About Me</h2>
+    <p class="tagline">사용자 중심의 집요함으로 서비스의 본질을 설계하는 프로덕트 디자이너</p>
+    <p>문제를 끝까지 파고들어 해결책을 찾아내는 집요함을 바탕으로 꾸준히 성장해왔으며, 새로운 방법을 배우고 사용자의 흐름에 적용하는 데 열정을 가지고 있습니다.</p>
+    <p>개발 동아리 활동을 통해 팀원과 긴밀히 협업하며 사용자 경험의 구조를 설계하고 프로젝트를 주도적으로 출시까지 완성하는 경험을 쌓았습니다. 또한, 스타트업에서 개발자로서 기술적 난제를 해결하는 데 그치지 않고, <strong>사용자의 행동 구조를 다시 설계하는 BM 전환</strong>을 기획·제안했습니다.</p>
+    <p>계속하여 데이터·관찰·실험으로 디자인 결정의 근거를 단단히 만들고, 빠른 서비스 확장 속도에 맞춰 팀과 함께 기민하게 가설을 검증하며 성장하고 싶습니다. 데이터를 기반으로 검증하고 개선하며, 사용자에게 실질적 가치를 전하는 디자이너가 되고자 합니다.</p>
+  </div>
+
+  <!-- Project 01 · 포토위젯 -->
+  <div class="project">
+    <div class="project-head">
+      <div class="project-num">01</div>
+      <div>
+        <h3 class="project-title">포토위젯 — iOS 개발 인턴</h3>
+        <p class="project-sub">스타트업 포토위젯의 iOS 서비스 기능 개선·유지보수와 외부 광고사 협력 기반의 광고 모듈 교체 작업을 담당</p>
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <div class="filler"></div>
+      <dl class="meta-table">
+        <dt>기간</dt><dd>2026.04 – 2026.05 (2개월)</dd>
+        <dt>역할</dt><dd>iOS 개발 인턴</dd>
+        <dt>사용 기술</dt><dd>Swift · iOS · Claude Code · Adrop · Slack · Jira · Linear</dd>
+      </dl>
+    </div>
+
+    <div class="sub">
+      <h4>본인 기여</h4>
+      <div class="body">
+        <ul>
+          <li>기존 포토위젯 iOS 서비스의 <strong>기능 개선 및 유지보수 업무</strong>를 담당</li>
+          <li><strong>외부 광고사와 협력</strong>하여 기존 광고를 새 광고로 대체하는 작업을 맡아 진행 — 외부 파트너와의 커뮤니케이션·연동 작업까지 책임</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 02 · instamoney -->
+  <div class="project">
+    <div class="project-head">
+      <div class="project-num">02</div>
+      <div>
+        <h3 class="project-title">instamoney — SNS 사용을 줄이도록 돕는 앱테크 서비스</h3>
+        <p class="project-sub">서울대 캠퍼스타운 입주 창업팀에서 iOS 1인 개발<br> '강제 제한' BM이 사용자 저항으로 이탈을 만든다는 문제를 정의하고 '자발적 사용 감소 보상' 구조로 BM 전환 기획·제안</p>
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <div class="filler"></div>
+      <dl class="meta-table">
+        <dt>기간</dt><dd>2025.01 – 2025.04 (4개월)</dd>
+        <dt>역할</dt><dd>iOS 1인 개발자</dd>
+        <dt>사용 기술</dt><dd>Swift · iOS · AdMob · Kakao Adfit · Firebase Cloud Messaging · Amplitude</dd>
+      </dl>
+    </div>
+
+    <div class="sub">
+      <h4>본인 기여</h4>
+      <div class="body">
+        <ul>
+          <li><strong>BM 전환 기획</strong> — 유저 저항이 큰 'SNS 강제 제한' 모델을 '자발적 사용 감소에 대한 보상' 구조로 BM 전환을 팀에 제안<br>행동을 막는 구조 자체를 의심하고 사용자의 자율성을 제품 동력으로 바꾸는 방향으로 수정.</li>
+          <li><strong>광고 수익 모델 최적화</strong> — AdMob·Kakao Adfit 연동으로 광고 노출 대비 수익 효율을 극대화하는 배치 전략 수립 및 구현</li>
+          <li><strong>푸시 알림 시스템</strong> — Firebase Cloud Messaging(FCM) 기반 푸시 알림 발송 시스템과 권한 처리 구현</li>
+          <li><strong>데이터 트래킹</strong> — Amplitude로 보상 수령 퍼널을 분석해 주요 이탈 지점을 확인하고 개선 작업을 주도</li>
+          <li>1인 개발 환경에서 설계 → 구현 → 출시 → 데이터 검증 -> 개선의 한 사이클을 모두 책임짐</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h4>성과</h4>
+      <div class="body">
+        <ul>
+          <li>BM 구조 재설계 제안 채택 및 서비스 출시</li>
+          <li>1인 iOS 환경에서 광고·푸시·트래킹의 전체 사이클을 처음부터 끝까지 책임진 경험 확보</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pn"><span>경력기술서 · 윤희슬</span><span>1 / 3</span></div>
+
+</section>
+
+<!-- PAGE 2 · 데이트로드 + doorip -->
+<section class="page">
+
+  <!-- Project 03 · 데이트로드 -->
+  <div class="project" style="border-top:none; padding-top: 0;">
+    <div class="project-head">
+      <div class="project-num">03</div>
+      <div>
+        <h3 class="project-title">데이트로드 — 코스 중심의 데이트 코스 공유 서비스 <span class="award">데모데이 최우수상</span></h3>
+        <p class="project-sub">메인 화면의 빈 화면 노출 문제를 발견해 스켈레톤 뷰와 로딩 인디케이터의 노출 규칙을 새로 설계하고, Figma 커스텀 디자인 + iOS 구현 시연으로 출시까지 반영</p>
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <div class="filler"></div>
+      <dl class="meta-table">
+        <dt>기간</dt><dd>2024.07 – 2024.11 (5개월)</dd>
+        <dt>역할</dt><dd>iOS 파트 리드</dd>
+        <dt>사용 기술</dt><dd>Swift · iOS · Figma · Notion</dd>
+      </dl>
+    </div>
+
+    <div class="sub">
+      <h4>본인 기여</h4>
+      <div class="body">
+        <ul>
+          <li>메인 화면에서 다량의 데이터를 불러올 때 <strong>빈 화면이 노출되어 앱이 멈춘 것처럼 보일 수 있다는 문제</strong>를 직접 사용 관찰에서 발견</li>
+          <li>스켈레톤 뷰와 로딩 인디케이터를 동시에 노출하는 첫 안에서, <strong>매번 둘을 함께 보여주면 짧게 스치는 데이터 변경에서도 사용자 흐름이 끊긴다는 점</strong>을 인지하고 노출 규칙을 단계 분리</li>
+          <li>최종 규칙 — <strong>첫 데이터 로딩에서는 스켈레톤 + 로딩 인디케이터를 함께 노출, 이후 데이터 변경 시에는 로딩 인디케이터만 노출</strong></li>
+          <li>개발 환경 기본 스켈레톤이 메인 뷰 레이아웃과 맞지 않아, <strong>Figma로 메인 뷰의 레이아웃에 맞춘 스켈레톤을 직접 커스텀 디자인</strong></li>
+          <li>디자인 시안 전달에서 멈추지 않고 <strong>iOS 단까지 직접 구현해 작동하는 형태로 팀에 시연,</strong> 팀의 의사결정을 끌어냄</li>
+          <li>iOS 파트 리드로 다른 직군과의 협업 및 출시 프로세스 주도</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h4>성과</h4>
+      <div class="body">
+        <ul>
+          <li>제안한 노출 규칙이 그대로 반영되어 출시되어 데모데이 시연에서 로딩 UX에 대한 긍정적 피드백 확보</li>
+          <li>Active Users <strong>2,400+</strong> 달성</li>
+          <li>SOPT 34기 데모데이 <strong>최우수상</strong> 수상</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 04 · doorip -->
+  <div class="project">
+    <div class="project-head">
+      <div class="project-num">04</div>
+      <div>
+        <h3 class="project-title">doorip — 함께 완성하는 여행 할 일 서비스 <span class="award">데모데이 대상</span></h3>
+        <p class="project-sub">iOS 개발자로서 참여한 첫 팀 프로젝트이자, 여행 준비라는 본질적으로 '함께'인 행동에서 여행 스타일 진단 결과를 갖고 싶은 이미지로 만들어 자발적 공유를 유입 경로로 제안한 프로젝트</p>
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <div class="filler"></div>
+      <dl class="meta-table">
+        <dt>기간</dt><dd>2023.12 – 2024.02 (3개월)</dd>
+        <dt>역할</dt><dd>iOS 개발자</dd>
+        <dt>사용 기술</dt><dd>Swift · iOS · Figma · Notion</dd>
+      </dl>
+    </div>
+
+    <div class="sub">
+      <h4>본인 기여</h4>
+      <div class="body">
+        <ul>
+          <li>여행 취향 진단 결과의 공유 가치를 높이는 <strong>이미지 소장 기능 제안</strong> — 강요된 공유 버튼이 아니라, 갖고 싶어지는 결과물 자체가 공유의 동력이 되도록 설계</li>
+          <li>레이아웃 변경 시 자연스러운 애니메이션을 직접 구현해 함께 쓰는 화면의 완성도 향상</li>
+          <li>첫 iOS 팀 프로젝트에서 다직군 협업 프로세스와 출시 과정을 학습</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h4>성과</h4>
+      <div class="body">
+        <ul>
+          <li>Active Users <strong>1,300+</strong> 달성</li>
+          <li>SOPT 33기 데모데이 <strong>대상</strong> 수상</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pn"><span>경력기술서 · 윤희슬</span><span>2 / 3</span></div>
+
+</section>
+
+<!-- PAGE 3 · 기타 프로젝트 + 활동 + 학력 + 자격 + 수상 + 스킬 -->
+<section class="page">
+
+  <!-- Project 05 · 기타 -->
+  <div class="project" style="border-top: none; padding-top: 0;">
+    <div class="project-head">
+      <div class="project-num">05</div>
+      <div>
+        <h3 class="project-title">기타 프로젝트</h3>
+        <p class="project-sub">학부 시절에 참여한 팀 프로젝트와 외주 프로젝트<br>기획·설계·다양한 플랫폼(Android · Flutter · React Native · 웹)을 직접 경험하며 개발 프로세스의 폭을 넓힘</p>
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <div class="filler"></div>
+      <div class="brief-list">
+
+        <div class="brief">
+          <div class="b-num">05 · 1</div>
+          <div>
+            <p class="b-title">MyU — 교내 학생 생활 도움 서비스</p>
+            <p class="b-meta">FE 개발자 (HTML · CSS · JavaScript) · 2023.05 – 2023.06 · 전공 수업 팀 프로젝트</p>
+            <p class="b-desc">전공 수업 '웹 프로그래밍' 팀 프로젝트의 리드로 참여<br>타겟 유입 가설을 수립하고 서비스 핵심 가치를 정의하는 <strong>전체 기획 단계에 참여</strong>, 프로젝트 운영까지 주도</p>
+          </div>
+        </div>
+
+        <div class="brief">
+          <div class="b-num">05 · 2</div>
+          <div>
+            <p class="b-title">MyIcecreamBox — 아이스크림과 함께 메시지를 주고받는 서비스</p>
+            <p class="b-meta">FE 개발자 (React Native) · 2023.05 – 2023.06 · 전공 수업 팀 프로젝트</p>
+            <p class="b-desc">전공 수업 '모바일 프로그래밍' 팀 프로젝트로 <strong>서비스 기획부터 설계까지 직접 참여</strong></p>
+          </div>
+        </div>
+
+        <div class="brief">
+          <div class="b-num">05 · 3</div>
+          <div>
+            <p class="b-title">WonderWoman — 생리대 딜리버리 서비스</p>
+            <p class="b-meta">Android 리드 개발자 · 2023.07 – 2023.08 · 첫 Android 팀 프로젝트</p>
+            <p class="b-desc">첫 Android 팀 프로젝트로 협업 프로세스와 개발 사이클 학습</p>
+          </div>
+        </div>
+
+        <div class="brief">
+          <div class="b-num">05 · 4</div>
+          <div>
+            <p class="b-title">PSR — 종합 온라인 매칭 플랫폼</p>
+            <p class="b-meta">Flutter 개발자 · 2023.07 – 2023.12 · 외주 프로젝트</p>
+            <p class="b-desc">첫 Flutter 서비스 개발 및 출시 <br>외주 프로젝트로 클라이언트 요구사항 협의·개발·운영의 전 과정을 경험</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec-head" style="margin-top: 40px;">활동 경력 · Activities</h2>
+  <div class="info-block">
+    <h3>동아리 · Community</h3>
+    <div class="li">
+      <span class="yr">2023.09 – 2024.08</span>
+      <strong>SOPT 33–34기</strong>[iOS 파트 리드 / 운영팀원] — 약 200명 규모 네트워킹 행사 및 다수의 해커톤 기획·운영 <span class="pill">iOS 파트 MVP</span>
+    </div>
+    <div class="li">
+      <span class="yr">2023.03 – 2023.08</span>
+      <strong>UMC</strong>[Android 파트] — 다직군 협업 및 개발 프로세스 학습 <span class="pill">스터디 우수상</span>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <h3>행사 운영 · Volunteer</h3>
+    <div class="li">
+      <span class="yr">2024.10</span>
+      <strong>KWDC24</strong> — 국내 최대 iOS 컨퍼런스에 자원봉사자로 참여하여 참가자 동선·세션 운영 지원, 글로벌 스피커 응대
+    </div>
+  </div>
+
+  <h2 class="sec-head" style="margin-top: 40px;">학력 · 자격</h2>
+  <div class="info-grid">
+    <div class="info-block">
+      <h3>학력 · Education</h3>
+      <div class="li">
+        <strong>명지대학교</strong> 응용소프트웨어전공 (졸업)
+      </div>
+    </div>
+    <div class="info-block">
+      <h3>자격 · Certifications</h3>
+      <div class="li">
+        <span class="yr">2025.09</span>
+        <strong>정보처리기사</strong> · 한국산업인력공단
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec-head" style="margin-top: 40px;">수상 · Awards</h2>
+  <div class="info-block">
+    <div class="li"><span class="yr">2024</span><strong>iOS 파트 MVP</strong> · SOPT 34기</div>
+    <div class="li"><span class="yr">2024</span><strong>데모데이 최우수상</strong> · SOPT 34기 (데이트로드)</div>
+    <div class="li"><span class="yr">2024</span><strong>솝커톤 대상</strong> · SOPT 34기</div>
+    <div class="li"><span class="yr">2024</span><strong>데모데이 대상</strong> · SOPT 33기 (doorip)</div>
+    <div class="li"><span class="yr">2023</span><strong>스터디 우수상</strong> · UMC</div>
+  </div>
+
+  <h2 class="sec-head" style="margin-top: 40px;">스킬 · Skills</h2>
+  <div class="skill-row">
+    <div class="cat">Tech</div>
+    <div class="items">Figma · Swift · UIKit · SwiftUI · HTML · CSS · JavaScript · AI Prompting (Claude Code)</div>
+  </div>
+  <div class="skill-row">
+    <div class="cat">Research &amp; Data</div>
+    <div class="items">Amplitude · Google Analytics </div>
+  </div>
+  <div class="skill-row">
+    <div class="cat">Collaboration</div>
+    <div class="items">Git ·Notion · Slack · Jira · Confluence · Linear · Outline</div>
+  </div>
+  <div class="pn"><span>경력기술서 · 윤희슬</span><span>3 / 3</span></div>
+
+</section>
+
+</body>
+</html>
